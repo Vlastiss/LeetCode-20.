@@ -5,7 +5,7 @@
 // Open brackets must be closed by the same type of brackets.
 // Open brackets must be closed in the correct order.
 // Every close bracket has a corresponding open bracket of the same type.
- 
+
 
 // Example 1:
 // Input: s = "()"
@@ -25,20 +25,23 @@
  */
 
 
-var isValid = function(s) {
+var isValid = function (s) {
 
-    const pairs =  {
+    const pairs = {
         pair1: "()",
         pair2: "[]",
         pair3: "{}"
     }
     const brackets = [...s];
-    
-    for (let i =0; i <brackets.length; i++) {
+    var validator = true;
+    const stack = [];
 
-        // console.log(brackets[i])
-        console.log(brackets[i + 1])
+    for (let i = 0; i < brackets.length; i++) {
+        const currentBracket = brackets[i];
     }
-};
 
-isValid("()[]");
+
+    console.log(validator);
+}
+
+isValid("()");
