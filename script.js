@@ -1,36 +1,29 @@
-var isValid = function (s) {
-    const pairs = {
-        '(': ')',
-        '[': ']',
-        '{': '}'
-    };
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
 
-    const brackets = [...s];
-    var validator = true;
-    const stack = [];
-
-    for (let i = 0; i < brackets.length; i++) {
-        const currentBracket = brackets[i];
-
-        if (pairs.hasOwnProperty(currentBracket)) {
-            stack.push(currentBracket);
-        } else {
-            const lastOpeningBracket = stack.pop();
-
-            // Check if the current bracket matches the expected closing bracket
-            if (pairs[lastOpeningBracket] !== currentBracket) {
-                validator = false;
-                break;
+    let arr = []
+    let obj = {
+        '(' : ')',
+        '[':']',
+        '{':'}'
+    }
+ 
+    for(let x of s){
+        if(x in obj){
+            arr.push(x)
+        }else{
+            let a = arr.pop()
+            if(obj[a] != x){
+                return false
             }
         }
     }
+    return arr.length === 0
+ }
 
-    if (stack.length !== 0) {
-        validator = false;
-    }
-
-    console.log(validator);
-}
-
-// Example usage:
-isValid("({})"); // Should print false
+console.log(isValid("()")) // should be true
+console.log(isValid("[]()[]"))  // should be true
+console.log(isValid("(]"))  // should be false
